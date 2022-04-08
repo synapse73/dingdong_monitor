@@ -21,6 +21,7 @@ for CURL:
 （我怕用大号有危险，不过目前没遇到），然后填自己的地址，加入购物车一样东西，试图结算，选时间。
 在抓包软件里 找到开头是 https://maicai.api.ddxq.mobi/order/getMultiReserveTime 这条，导出cURL，结果会非常长，填充到sh文件里
 (如果不够长，一定没找对）
+(记得打开enable https）
 
 ```bash
 # 在MacOS终端运行如下命令
