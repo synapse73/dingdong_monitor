@@ -2,14 +2,14 @@
 # 检查叮咚买菜是否有可配送时段,有则通过Bark推送
 
 # (*)请填充BarkId
-barkId=""
+barkId="填充自己的barkid"
 
 while :; do
 
 echo "正在检查是否有可用配送时段..."
 
-# (*)请填充cURL命令,别忘记输出到tmp.json
-# curl https://maicai.api.ddxq.mobi/order/getMultiReserveTime > tmp.json
+# (*)请填充自己的cURL命令，这里面包含了自己的位置站点信息！！输出到tmp.json不要漏
+curl 'https://maicai.api.ddxq.mobi/order/getMultiReserveTime'  > tmp.json
 
 responseCodeCheck=`cat tmp.json | jq -r '.code'`
 
@@ -27,7 +27,8 @@ if [[ $availableCount -gt 0 ]]; then
     exit 0
 fi
 
-echo "无可用配送时段 休眠15秒再试..."
-sleep 15
+sleepTime=$(( (RANDOM % 15 ) + 15))
+echo "无可用配送时段 随机休眠15-30秒再试..."
+sleep $sleepTime
 
 done
